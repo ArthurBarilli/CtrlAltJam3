@@ -9,5 +9,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]public Transform projectilePlace;
     public bool broke;
     public bool dead;
+    public bool canTake;
+    public bool bossFight;
     public abstract void TakeDamage(int damage, bool melee);
 }

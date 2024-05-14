@@ -7,6 +7,7 @@ TagManager:
   - Interactable
   - Enemy
   - AttackOrigin
+  - BossLight
   layers:
   - Default
   - TransparentFX

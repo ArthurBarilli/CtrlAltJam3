@@ -12,5 +12,6 @@ namespace TheKiwiCoder {
         public Vector3 moveToPosition;
         public GameObject player;
         public string playerComparativeStatus;
+        public GameObject bossLight;
     }
 }
