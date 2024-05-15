@@ -5,6 +5,7 @@ using TheKiwiCoder;
 
 public class CheckBroke : ActionNode
 {
+    public bool boss;   
     protected override void OnStart() {
     }
 
@@ -13,8 +14,15 @@ public class CheckBroke : ActionNode
     }
 
     protected override State OnUpdate() {
-        if(context.enemy.broke == true)
+        if(context.enemy.broke == true && boss == true)
         {
+            blackboard.bossLight.GetComponent<Light>().enabled = true;
+            context.agent.ResetPath();
+            return State.Success;
+        }
+        else if(context.enemy.broke == true && boss == false)
+        {
+            context.agent.ResetPath();
             return State.Success;
         }
         return State.Failure;

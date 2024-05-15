@@ -20,6 +20,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: Gets on the range from the player
   drawGizmos: 0
   children:
@@ -46,6 +47,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
 --- !u!114 &-4661376100578173584
@@ -68,6 +70,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   child: {fileID: 542935657982288867}
@@ -91,6 +94,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
 --- !u!114 &-3684345235494819759
@@ -113,6 +117,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   dir: 0
@@ -139,8 +144,10 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
+  boss: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +180,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
 --- !u!114 &542935657982288867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +201,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   child: {fileID: 3387999438047846740}
@@ -218,6 +227,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: Gets Away
   drawGizmos: 0
   children:
@@ -242,6 +252,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   direction: {x: 0, y: 0, z: 0}
@@ -266,6 +277,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   children:
@@ -290,6 +302,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   children:
@@ -317,6 +330,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   projectileSpeed: 20
@@ -340,6 +354,7 @@ MonoBehaviour:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
+    bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
   children:

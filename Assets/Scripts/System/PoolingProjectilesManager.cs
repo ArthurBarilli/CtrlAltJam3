@@ -14,10 +14,13 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
     [Header("Enemies projectiles")]
     [SerializeField]private List<GameObject> enemySoundProjectiles;
     [SerializeField] int currentEnemyProjectile;
+    [SerializeField]private List<GameObject> bossLeoProjectiles;
+    [SerializeField] int currentBossLeoProjectile;
 
     [SerializeField] GameObject basicProjectile;
     [SerializeField] GameObject explosiveProjectile;
     [SerializeField] GameObject enemyProjectile;
+    [SerializeField] GameObject bossProjectile;
 
 
 
@@ -32,6 +35,7 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
         basicProjectiles.Clear();
         LightBallProjectiles.Clear();
         enemySoundProjectiles.Clear();
+        bossLeoProjectiles.Clear();
         inactiveProjectilePlace = transform;
         for (int i = 0; i <3; i++)
         {
@@ -44,6 +48,10 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
         for (int i = 0; i < 3; i++)
         {
             LightBallProjectiles.Add(Instantiate(explosiveProjectile, inactiveProjectilePlace.position, quaternion.identity));
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            bossLeoProjectiles.Add(Instantiate(bossProjectile, inactiveProjectilePlace.position, quaternion.identity));
         }
     }
 
@@ -77,6 +85,17 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
         }
         currentEnemyProjectile++;
         return enemySoundProjectiles[currentEnemyProjectile];
+    }
+
+    public GameObject ThrowProjectileBoss()
+    {
+        if (currentBossLeoProjectile >= bossLeoProjectiles.Count - 1)
+        {
+           currentBossLeoProjectile = 0;
+            return bossLeoProjectiles[currentBossLeoProjectile];
+        }
+        currentBossLeoProjectile++;
+        return bossLeoProjectiles[currentBossLeoProjectile];
     }
 
 }

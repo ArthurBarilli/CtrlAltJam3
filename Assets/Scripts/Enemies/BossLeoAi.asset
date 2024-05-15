@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7997311611195031538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f81454c752bbe84a898a40a5df0ef11, type: 3}
+  m_Name: GetPlayer
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 92497853d9eb76743983e4872d13ced7
+  position: {x: 433.0001, y: 519.55005}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    player: {fileID: 0}
+    playerComparativeStatus: 
+    bossLight: {fileID: 0}
+  description: 
+  drawGizmos: 0
+--- !u!114 &-7626376502504472765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef19f48b1f9b49b4292585e50e15fa11, type: 3}
+  m_Name: SpawnEnemiesBoss
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 2ebf194770e37114083c60c06411242a
+  position: {x: 733, y: 963}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    player: {fileID: 0}
+    playerComparativeStatus: 
+    bossLight: {fileID: 0}
+  description: 
+  drawGizmos: 1
+  currentWalkingLocation: 0
+  walkingPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-6633233021984633035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +63,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c3ef4eb0c58fb6740a70a6821c05d9c0
-  position: {x: 730.99994, y: 691.00006}
+  position: {x: 1031, y: 700}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
@@ -23,7 +71,10 @@ MonoBehaviour:
     bossLight: {fileID: 0}
   description: Attack 2
   drawGizmos: 0
-  children: []
+  children:
+  - {fileID: 5901929163543352515}
+  - {fileID: -883132075228996934}
+  - {fileID: -4720890357221343622}
 --- !u!114 &-6301401293149879707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,6 +98,34 @@ MonoBehaviour:
     bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
+--- !u!114 &-4720890357221343622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b639a4bfd500d40baf260544dca942, type: 3}
+  m_Name: ProjectileBoss
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 9ad84ef7290d8d24995f88c5434fd047
+  position: {x: 1331, y: 834}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    player: {fileID: 0}
+    playerComparativeStatus: 
+    bossLight: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  numberOfProjectiles: 10
+  currentProjectiles: 0
+  counter: 0
+  timeBetweenProjectiles: 0.3
+  projectileSpeed: 20
 --- !u!114 &-4276691806044069290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +219,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 15c5d6d2fafe8834897cc4619984c2e7
-  position: {x: 989.52747, y: 609.1446}
+  position: {x: 1290, y: 618}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
@@ -190,7 +269,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6f7cd558ab38c89439e46bde82a891a3
-  position: {x: 433.0001, y: 569.00006}
+  position: {x: 733, y: 613}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
@@ -200,8 +279,30 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: 7430738484273491145}
-  - {fileID: -6633233021984633035}
-  - {fileID: -2744313625877724823}
+--- !u!114 &-883132075228996934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5134d9de14153468b48928d3e7359a, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: dfdd295c783e79145b3bf54ddf8a9897
+  position: {x: 1181, y: 834}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    player: {fileID: 0}
+    playerComparativeStatus: 
+    bossLight: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  duration: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +332,11 @@ MonoBehaviour:
   - {fileID: 7430738484273491145}
   - {fileID: -6633233021984633035}
   - {fileID: -2744313625877724823}
+  - {fileID: -7626376502504472765}
+  - {fileID: 5901929163543352515}
+  - {fileID: -883132075228996934}
+  - {fileID: -4720890357221343622}
+  - {fileID: -7997311611195031538}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
@@ -284,6 +390,7 @@ MonoBehaviour:
   description: BossFight
   drawGizmos: 0
   children:
+  - {fileID: -7997311611195031538}
   - {fileID: -1570842327166864702}
 --- !u!114 &3091718908978032371
 MonoBehaviour:
@@ -333,6 +440,30 @@ MonoBehaviour:
     bossLight: {fileID: 0}
   description: 
   drawGizmos: 0
+  boss: 1
+--- !u!114 &5901929163543352515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c6e98b883b7f1488f8fe32247e56a2, type: 3}
+  m_Name: GoToMiddleBoss
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: f7ea96fb00162c947926a14d98fff4f9
+  position: {x: 1031, y: 834}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    player: {fileID: 0}
+    playerComparativeStatus: 
+    bossLight: {fileID: 0}
+  description: 
+  drawGizmos: 1
 --- !u!114 &7430738484273491145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,15 +479,18 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ffb02e3ccb7d7404d9ab3a7bea20f17c
-  position: {x: 432.9999, y: 779}
+  position: {x: 733, y: 788}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
     playerComparativeStatus: 
     bossLight: {fileID: 0}
-  description: Attack 1
+  description: 'Attack 1
+
+    Spawn & hide'
   drawGizmos: 0
-  children: []
+  children:
+  - {fileID: -7626376502504472765}
 --- !u!114 &8968242544070455012
 MonoBehaviour:
   m_ObjectHideFlags: 0

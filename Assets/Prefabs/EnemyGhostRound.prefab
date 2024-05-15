@@ -173,6 +173,8 @@ MonoBehaviour:
   projectilePlace: {fileID: 8811447481444641004}
   broke: 0
   dead: 0
+  canTake: 0
+  bossFight: 0
   player: {fileID: 0}
   agent: {fileID: 0}
   eyes: {fileID: 7495202110924242058}

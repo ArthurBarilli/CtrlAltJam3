@@ -4915,8 +4915,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   armor: 10
+  projectilePlace: {fileID: 0}
   broke: 0
   dead: 0
+  canTake: 0
+  bossFight: 0
   player: {fileID: 0}
   agent: {fileID: 0}
   eyes: {fileID: 1988855887956467265}
