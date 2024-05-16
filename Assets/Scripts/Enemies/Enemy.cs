@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField]protected float life;
+    [SerializeField]public float life;
     [SerializeField]protected float armor;
     [SerializeField]public Transform projectilePlace;
     public bool broke;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cinemachine.Utility;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
@@ -16,16 +17,25 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private Vector3 attackDirection;
     [SerializeField] private GameObject attackOrigin;
     [SerializeField] float life;
+    [Header("Mana Related")]
+    [SerializeField] bool regenaratingMana;
     [SerializeField] float mana;
+    [SerializeField] float manaRegen; //how much mana regen by second
+    [SerializeField] float timeToRegenMana; //time without casting any spell to regen mana
+    [SerializeField] float timeSinceLastSpell;
     [SerializeField] Vector3 worldPosition;
+    [SerializeField] List<Image> lifeUi;
+    [SerializeField] Sprite lifeSprite;
+    [SerializeField] Sprite lifelessSprite;
     public Camera mainCamera; // Set this to the main camera in the scene
     public float groundLevel; // Set this to the ground level
-
+    private bool canCast;
 
     void Start()
     {
         attackOrigin = GameObject.FindGameObjectWithTag("AttackOrigin");
         mainCamera = Camera.main;
+        canCast = true;
     }
     private void Update()
     {
@@ -67,7 +77,14 @@ public class CombatManager : MonoBehaviour
         {
             attackDirection = worldPosition - transform.position;
             transform.LookAt(worldPosition);
-            inventary[currentSpell].Attack(attackDirection, attackOrigin.transform.position);
+            if(mana >= inventary[currentSpell].manaCost && canCast)
+            {
+                inventary[currentSpell].Attack(attackDirection, attackOrigin.transform.position);
+                mana -= inventary[currentSpell].manaCost;
+                canCast = false;
+                StartCoroutine(WaitForFireRate());
+                timeSinceLastSpell = 0;
+            }
         }
         if(Input.GetKeyDown(attackInput))
         {
@@ -75,15 +92,35 @@ public class CombatManager : MonoBehaviour
             transform.LookAt(worldPosition);
             anim.SetTrigger("Attack");
         }
+
+
+
+        //regen mana
+        if(regenaratingMana)
+        {
+            if(mana < 100)
+            mana += manaRegen * Time.deltaTime;
+            else
+            mana = 100;
+        }
+        timeSinceLastSpell += Time.deltaTime;
+        if(timeSinceLastSpell >= timeToRegenMana)
+        {
+            regenaratingMana = true;
+        }
+        else
+        regenaratingMana = false;
     }
 
     public void TakeDamage(int damage)
     {
         life -= damage;
+        UpdateLife();
         if(life <= 0)
         {
             GameManager.Instance.PlayerDie();
         }
+
     }
     public void AddSpell(GameObject spell)
     {
@@ -99,4 +136,49 @@ public class CombatManager : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(worldPosition, 0.3f); 
     }
+
+    private void UpdateLife()
+    {
+        foreach(Image icon in lifeUi)
+        {
+            icon.sprite = lifelessSprite;
+        }
+        switch (life)
+        {
+            case 5:
+                for (int i = 0; i < 5; i++)
+                {
+                    lifeUi[i].sprite = lifeSprite;
+                }    
+            break;
+            case 4:
+                for (int i = 0; i < 4; i++)
+                {
+                    lifeUi[i].sprite = lifeSprite;
+                }   
+            break;
+            case 3:
+                for (int i = 0; i < 3; i++)
+                {
+                    lifeUi[i].sprite = lifeSprite;
+                }   
+            break;
+            case 2:
+                for (int i = 0; i < 2; i++)
+                {
+                    lifeUi[i].sprite = lifeSprite;
+                }  
+            break;
+            case 1:
+                lifeUi[0].sprite = lifeSprite;
+            break;
+        }
+    }
+    IEnumerator WaitForFireRate()
+    {
+        yield return new WaitForSeconds(inventary[currentSpell].fireRate);
+        canCast = true;
+    }
+
+
 }
