@@ -871,6 +871,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: poste
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2fed1c68dc832274a83ee4ddb30133cb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -997,7 +1002,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1658,6 +1663,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2066543945885893796, guid: e212713be49c79045a1840dce9dee44f,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2606227590635755007, guid: e212713be49c79045a1840dce9dee44f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1934,10 +1944,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2463350800940889846, guid: 9629d2a2cdf137b41a5e59ceba87611c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4896869647709340930, guid: 9629d2a2cdf137b41a5e59ceba87611c,
         type: 3}
       propertyPath: m_Name
       value: arvore_retorcida_variante 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896869647709340930, guid: 9629d2a2cdf137b41a5e59ceba87611c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5241904451558301624, guid: 9629d2a2cdf137b41a5e59ceba87611c,
         type: 3}
@@ -2163,6 +2183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: arvore_retorcida_variante 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908326728905441334, guid: bfbfa94870fa5244484479b28f3fc4cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4429003121332755084, guid: bfbfa94870fa5244484479b28f3fc4cc,
         type: 3}
