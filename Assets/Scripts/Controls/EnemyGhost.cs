@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyGhost : Enemy
 {
@@ -13,12 +14,19 @@ public class EnemyGhost : Enemy
     [SerializeField] bool waiting;
     [SerializeField] float damageCd;
     [SerializeField] BoxCollider dmgCollider;
+    [SerializeField] Canvas canva;
+    [SerializeField] Transform canvaObject;
+    [SerializeField] Slider lifeSlider;
+    [SerializeField] Slider armorSlider;
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        canva.worldCamera = Camera.main;
+        lifeSlider.maxValue = life;
+        armorSlider.maxValue = armor;
     }
     public override void TakeDamage(int damage, bool melee)
     {
@@ -33,6 +41,9 @@ public class EnemyGhost : Enemy
     }
     void Update()
     {
+        canvaObject.LookAt(Camera.main.transform.position);
+        lifeSlider.value = life;
+        armorSlider.value = armor;
         if(player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");

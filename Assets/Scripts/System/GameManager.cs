@@ -12,8 +12,11 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     [SerializeField] GameObject playerPrefab;
     [SerializeField] CinemachineVirtualCamera vCamera;
-    [SerializeField] List<Transform> spawns;
+    [SerializeField] List<Transform> playerSpawns;
+    [SerializeField] List<Transform> itemSpawns;
+    [SerializeField] List<GameObject> items;
     [SerializeField] GameObject GameOverBg;
+    [SerializeField] GameObject currentBoss;
 
     protected override void Awake()
     {
@@ -42,14 +45,22 @@ public class GameManager : Singleton<GameManager>
     {
         yield return  new WaitForFixedUpdate();
         //selects a random spawn
-        int randomSpawn = Random.Range(0, spawns.Count);
+        int randomSpawn = Random.Range(0, playerSpawns.Count);
         //instantiates the player
-        GameObject currentPlayer = Instantiate(playerPrefab, spawns[randomSpawn].position, Quaternion.identity);
+        GameObject currentPlayer = Instantiate(playerPrefab, playerSpawns[randomSpawn].position, Quaternion.identity);
         currentPlayer.GetComponent<CombatManager>().mainCamera = Camera.main;
         vCamera.LookAt = currentPlayer.transform;
         vCamera.Follow = currentPlayer.transform;
         //sets the projectiles
         GetComponent<PoolingProjectilesManager>().SetProjectiles();
+        //sets the items
+        foreach (Transform itemSpawn in itemSpawns)
+        {
+            int randomItem = Random.Range(0, items.Count);
+            Instantiate(items[randomItem], itemSpawn.position, Quaternion.identity);
+        }
+        //sets the boss
+        //sets the position of the boss and the boss arena
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -58,5 +69,10 @@ public class GameManager : Singleton<GameManager>
         {
             StartCoroutine(SpawnsRoutine());
         }
+    }
+
+    public void StartBossFight()
+    {
+        currentBoss.GetComponent<BossLeoAi>().bossFight = true;
     }
 }

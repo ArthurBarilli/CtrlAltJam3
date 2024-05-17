@@ -8,7 +8,7 @@ public class LightBallProjectile : MonoBehaviour
     [SerializeField] float lifeTime;
     [SerializeField] float explodeTime;
     [SerializeField] float counter;
-    [SerializeField] int damage;
+    public int damage;
     public bool active;
     Rigidbody rb;
 

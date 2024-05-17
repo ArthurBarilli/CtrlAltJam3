@@ -9,6 +9,7 @@ public class BasicSpell : Spells
     public override void Attack(Vector3 direction, Vector3 attackOrigin)
     {
         GameObject projectile = PoolingProjectilesManager.Instance.ThrowProjectileBasic();
+        projectile.GetComponent<BasicSpellProjectile>().damage += bonusDamage;
         projectile.transform.position = attackOrigin;
         projectile.GetComponent<BasicSpellProjectile>().ActivateProjectile();
         projectile.GetComponent<Rigidbody>().velocity = direction.normalized * projectileSpeed;

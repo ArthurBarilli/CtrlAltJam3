@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BasicSpellProjectile : MonoBehaviour
 {
-    [SerializeField] int damage;
+    public int damage;
     public bool active = false;
     [SerializeField] float lifeTime;
     float counter;
