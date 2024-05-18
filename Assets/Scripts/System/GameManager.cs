@@ -14,9 +14,13 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] CinemachineVirtualCamera vCamera;
     [SerializeField] List<Transform> playerSpawns;
     [SerializeField] List<Transform> itemSpawns;
+    [SerializeField] List<Collider> enemiesSpawns;
     [SerializeField] List<GameObject> items;
     [SerializeField] GameObject GameOverBg;
     [SerializeField] GameObject currentBoss;
+    [SerializeField] GameObject bossPrefab;
+    [SerializeField] List<GameObject> enemies;
+    [SerializeField] Transform bossSpawn;
 
     protected override void Awake()
     {
@@ -59,7 +63,14 @@ public class GameManager : Singleton<GameManager>
             int randomItem = Random.Range(0, items.Count);
             Instantiate(items[randomItem], itemSpawn.position, Quaternion.identity);
         }
+        //sets the enemies
+        foreach (Collider spawns in enemiesSpawns)
+        {
+            int randomNumber = Random.Range(3,6);
+            SpawnEnemies(spawns, randomNumber);
+        }
         //sets the boss
+        currentBoss = Instantiate(bossPrefab, bossSpawn.position, Quaternion.identity);
         //sets the position of the boss and the boss arena
     }
 
@@ -74,5 +85,17 @@ public class GameManager : Singleton<GameManager>
     public void StartBossFight()
     {
         currentBoss.GetComponent<BossLeoAi>().bossFight = true;
+    }
+
+    private void SpawnEnemies(Collider spawnSpace, int numberOfCharacters)
+    {
+        Vector3 size = spawnSpace.bounds.size;
+        float area = size.x * size.z;
+        for (int i = 0; i < numberOfCharacters; i++)
+        {
+            int randomEnemy = Random.Range(0, enemies.Count);
+            Vector3 spawnPosition = spawnSpace.bounds.center + new Vector3(Random.Range(-size.x/2, size.x/2), 0, Random.Range(-size.z/2, size.z/2));
+            Instantiate(enemies[randomEnemy], spawnPosition, Quaternion.identity);
+        }
     }
 }

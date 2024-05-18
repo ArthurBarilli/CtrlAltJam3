@@ -12,10 +12,9 @@ public class EnemyGhost : Enemy
     [SerializeField] GameObject eyes;
     [SerializeField] GameObject brokeFx;
     [SerializeField] bool waiting;
+    [SerializeField] bool started;
     [SerializeField] float damageCd;
     [SerializeField] BoxCollider dmgCollider;
-    [SerializeField] Canvas canva;
-    [SerializeField] Transform canvaObject;
     [SerializeField] Slider lifeSlider;
     [SerializeField] Slider armorSlider;
 
@@ -24,7 +23,6 @@ public class EnemyGhost : Enemy
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
-        canva.worldCamera = Camera.main;
         lifeSlider.maxValue = life;
         armorSlider.maxValue = armor;
     }
@@ -41,7 +39,6 @@ public class EnemyGhost : Enemy
     }
     void Update()
     {
-        canvaObject.LookAt(Camera.main.transform.position);
         lifeSlider.value = life;
         armorSlider.value = armor;
         if(player == null)
@@ -61,10 +58,22 @@ public class EnemyGhost : Enemy
             brokeFx.SetActive(true);
         }
 
-        
+        if(Vector3.Distance(player.transform.position, transform.position) > 40)
+        {
+            started = false;
+            enemyRenderer.enabled = false;
+        }
+        else if(Vector3.Distance(player.transform.position, transform.position) < 40 && Vector3.Distance(player.transform.position, transform.position) > 20)
+        {
+            started = false;
+            enemyRenderer.enabled = true;
+        }
+        else if(Vector3.Distance(player.transform.position, transform.position) < 20)
+        {
+            started = true;
+        }
 
-
-        if(!waiting)
+        if(!waiting && started)
         {
             if(!broke)
             {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1640413226669209686}
   - component: {fileID: 5495751659966361951}
   - component: {fileID: 6025134393700969251}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: LightBallSpell
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -118,8 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878953ad154b34a48afaaec8ff1ddfdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellSprite: {fileID: 21300000, guid: d34b1b4af6d52c2428090b2946c27a40, type: 3}
   manaCost: 20
+  bonusDamage: 0
   fireRate: 2
   lightBallProjectile: {fileID: 7069868879122757817, guid: 25a0303a3afafd6418efe9d2cb1d0bfe,
     type: 3}
-  projectileSpeed: 5
+  projectileSpeed: 10

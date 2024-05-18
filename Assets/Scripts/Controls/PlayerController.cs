@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem stepsFx;
 
     [SerializeField] Vector3 groundDirection;
+    [SerializeField] CombatManager combatManager;
     Vector3 moveDir;
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,10 @@ public class PlayerController : MonoBehaviour
         //turns the player face 
         if (groundDirection != Vector3.zero)
         {
-            transform.forward = groundDirection * Time.deltaTime;
+            if(combatManager.status != PlayerStatus.ATTACKING)
+            {
+                transform.forward = groundDirection * Time.deltaTime;
+            }
             //plays the steps
             stepsFx.Play();
         }

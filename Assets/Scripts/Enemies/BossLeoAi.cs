@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossLeoAi : Enemy
 {
     [SerializeField] int fullArmor;
     [SerializeField] ParticleSystem brokeFx;
     [SerializeField] GameObject projectile1;
+    [SerializeField] GameObject bossUi;
+    [SerializeField] Slider lifeSlider;
+    [SerializeField] Slider armorSlider;
     public override void TakeDamage(int damage, bool melee)
     {
         if(broke)
