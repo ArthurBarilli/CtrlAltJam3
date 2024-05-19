@@ -42,7 +42,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 62c05bb1580379b4d8c37d7d37a540fe
-  position: {x: 289, y: 581}
+  position: {x: 288.99985, y: 580.9999}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     player: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   dir: 0
-  walkingTime: 3
+  walkingTime: 1.5
   speed: 50
   counter: 0
 --- !u!114 &-2284710058424632391

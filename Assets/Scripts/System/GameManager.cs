@@ -18,9 +18,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] List<GameObject> items;
     [SerializeField] GameObject GameOverBg;
     [SerializeField] GameObject currentBoss;
+    [SerializeField] GameObject currentPlayer;
     [SerializeField] GameObject bossPrefab;
     [SerializeField] List<GameObject> enemies;
     [SerializeField] Transform bossSpawn;
+    [SerializeField] List<Transform> objectives;
+
+    [Header("Objectives")]
+    [SerializeField] float closestDistance = Mathf.Infinity;
+    [SerializeField] Transform closestObjective = null;
 
     protected override void Awake()
     {
@@ -32,6 +38,7 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = 60;
         SceneManager.sceneLoaded += OnSceneLoaded;
         StartRun();
+        StartCoroutine(ClosestObjective());
     }
 
     public void PlayerDie()
@@ -51,7 +58,7 @@ public class GameManager : Singleton<GameManager>
         //selects a random spawn
         int randomSpawn = Random.Range(0, playerSpawns.Count);
         //instantiates the player
-        GameObject currentPlayer = Instantiate(playerPrefab, playerSpawns[randomSpawn].position, Quaternion.identity);
+        currentPlayer = Instantiate(playerPrefab, playerSpawns[randomSpawn].position, Quaternion.identity);
         currentPlayer.GetComponent<CombatManager>().mainCamera = Camera.main;
         vCamera.LookAt = currentPlayer.transform;
         vCamera.Follow = currentPlayer.transform;
@@ -61,7 +68,7 @@ public class GameManager : Singleton<GameManager>
         foreach (Transform itemSpawn in itemSpawns)
         {
             int randomItem = Random.Range(0, items.Count);
-            Instantiate(items[randomItem], itemSpawn.position, Quaternion.identity);
+            objectives.Add(Instantiate(items[randomItem], itemSpawn.position, Quaternion.identity).transform);
         }
         //sets the enemies
         foreach (Collider spawns in enemiesSpawns)
@@ -71,6 +78,7 @@ public class GameManager : Singleton<GameManager>
         }
         //sets the boss
         currentBoss = Instantiate(bossPrefab, bossSpawn.position, Quaternion.identity);
+        objectives.Add(currentBoss.transform);
         //sets the position of the boss and the boss arena
     }
 
@@ -85,6 +93,26 @@ public class GameManager : Singleton<GameManager>
     public void StartBossFight()
     {
         currentBoss.GetComponent<BossLeoAi>().bossFight = true;
+    }
+    IEnumerator ClosestObjective()
+    {
+        yield return new WaitForSeconds(10f);
+        //finds the closest objective
+
+        foreach(Transform objective in objectives)
+        {
+            float distance = Vector3.Distance(currentPlayer.transform.position, objective.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestObjective = objective;
+            }
+        }
+        CheckClosestAgain();
+    }
+    void CheckClosestAgain()
+    {
+        StartCoroutine(ClosestObjective());
     }
 
     private void SpawnEnemies(Collider spawnSpace, int numberOfCharacters)

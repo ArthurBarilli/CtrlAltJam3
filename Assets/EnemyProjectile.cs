@@ -9,13 +9,14 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] int damage;
     public bool active = false;
     [SerializeField] float lifeTime;
+    [SerializeField] GameObject soundWaveVfx;
     float counter;
 
 
     // Update is called once per frame
     void Update()
     {
-         if (active)
+        if (active)
         {
             if(counter <= lifeTime)
             {
@@ -43,6 +44,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         counter = 0;
         active = true;
+        soundWaveVfx.SetActive(true);
         //activate further options
     }
 
@@ -52,5 +54,6 @@ public class EnemyProjectile : MonoBehaviour
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = PoolingProjectilesManager.Instance.inactiveProjectilePlace.position;
         //deactivate further options
+        soundWaveVfx.SetActive(false);
     }
 }

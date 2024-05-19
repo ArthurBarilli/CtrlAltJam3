@@ -10,6 +10,20 @@ public abstract class Spells : MonoBehaviour, IInteractable
    [SerializeField]public float manaCost;
    public int bonusDamage;
    public float fireRate;
+   [SerializeField] Animator anim;
+    public bool interactable { get; set; }
+
+    void Update()
+    {
+        if(interactable)
+        {
+            anim.SetBool("Interact", true);
+        }
+        else
+        {
+            anim.SetBool("Interact", false);
+        }
+    }
 
     public void Interact(GameObject player)
     {

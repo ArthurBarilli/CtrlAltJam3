@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Windows.Speech;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Vector3 groundDirection;
     [SerializeField] CombatManager combatManager;
+    [SerializeField] NavMeshAgent playerGuide;
     Vector3 moveDir;
     // Start is called before the first frame update
     void Start()

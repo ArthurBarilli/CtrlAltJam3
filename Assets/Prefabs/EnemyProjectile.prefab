@@ -181,3 +181,4 @@ MonoBehaviour:
   damage: 1
   active: 0
   lifeTime: 2
+  soundWaveVfx: {fileID: 4920741568731412051}

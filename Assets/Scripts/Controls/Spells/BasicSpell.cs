@@ -11,6 +11,7 @@ public class BasicSpell : Spells
         GameObject projectile = PoolingProjectilesManager.Instance.ThrowProjectileBasic();
         projectile.GetComponent<BasicSpellProjectile>().damage += bonusDamage;
         projectile.transform.position = attackOrigin;
+        projectile.transform.rotation = Quaternion.LookRotation(direction);
         projectile.GetComponent<BasicSpellProjectile>().ActivateProjectile();
         projectile.GetComponent<Rigidbody>().velocity = direction.normalized * projectileSpeed;
     }

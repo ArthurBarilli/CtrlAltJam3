@@ -19,6 +19,7 @@ public class EnemyGhostRound : Enemy
         agent = GetComponent<NavMeshAgent>();
         lifeSlider.maxValue = life;
         armorSlider.maxValue = armor;
+        armorSlider.value = armor;
         
     }
     public override void TakeDamage(int damage, bool melee)

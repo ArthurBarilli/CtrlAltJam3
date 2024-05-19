@@ -7,7 +7,11 @@ public class LightBallProjectile : MonoBehaviour
 {
     [SerializeField] float lifeTime;
     [SerializeField] float explodeTime;
+    [SerializeField] float antecipationTime;
     [SerializeField] float counter;
+    [SerializeField] bool doOnceAntecipation;
+    [SerializeField] GameObject antecipationVfx;
+    [SerializeField] GameObject explosionVfx;
     public int damage;
     public bool active;
     Rigidbody rb;
@@ -34,6 +38,13 @@ public class LightBallProjectile : MonoBehaviour
                 active = false;
                 counter = 0;
             }
+
+            if(counter >= antecipationTime && doOnceAntecipation)
+            {
+                antecipationVfx.SetActive(true);
+                doOnceAntecipation = false;
+            }
+
         }
     }
 
@@ -43,6 +54,8 @@ public class LightBallProjectile : MonoBehaviour
         GetComponent<Light>().range = 30;
         GetComponent<Light>().intensity = 10;
         GetComponent<MeshRenderer>().enabled = false;
+        antecipationVfx.SetActive(false);
+        explosionVfx.SetActive(true);
     }
 
     public void ActivateProjectile()
@@ -53,13 +66,16 @@ public class LightBallProjectile : MonoBehaviour
         GetComponent<Light>().enabled = true;
         counter = 0;
         active = true;
+        doOnceAntecipation = true;
         //activate further options
+
     }
     public void DeactivateProjectile()
     {
         GetComponent<Light>().enabled = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = PoolingProjectilesManager.Instance.inactiveProjectilePlace.position;
+        explosionVfx.SetActive(false);
         //deactivate further options
     }
 

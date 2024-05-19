@@ -24,6 +24,7 @@ public class Interact : MonoBehaviour
         if(other.CompareTag("Interactable"))
         {
             InteractableObject = other.GetComponent<IInteractable>();
+            InteractableObject.interactable = true;
         }
         
     }
@@ -32,7 +33,9 @@ public class Interact : MonoBehaviour
     {
         if(other.CompareTag("Interactable"))
         {
+            InteractableObject.interactable = false;
             InteractableObject = null;
+            
         }
     }
 

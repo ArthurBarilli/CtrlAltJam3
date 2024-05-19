@@ -9,6 +9,8 @@ public class BasicSpellProjectile : MonoBehaviour
     public bool active = false;
     [SerializeField] float lifeTime;
     float counter;
+    [SerializeField] GameObject Vfx;
+    [SerializeField] TrailRenderer trail;
 
     void Update()
     {
@@ -17,10 +19,14 @@ public class BasicSpellProjectile : MonoBehaviour
             if(counter <= lifeTime)
             {
                 counter += Time.deltaTime;
+                Vfx.SetActive(true);
+                trail.emitting = true;
             }
             else
             {
                 DeactivateProjectile();
+                Vfx.SetActive(false);
+                trail.emitting = false;
                 active = false;
                 counter = 0;
             }
