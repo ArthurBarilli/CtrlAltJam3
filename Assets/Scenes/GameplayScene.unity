@@ -89660,11 +89660,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8665107306592626951, guid: d7eeb6b962608c241a8a8ef53f56462e,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
