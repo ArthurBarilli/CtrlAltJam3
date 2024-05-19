@@ -24,7 +24,7 @@ public class GetCloserToPlayer : ActionNode
             return State.Failure;
         }
 
-        if(Vector3.Distance(blackboard.player.transform.position, context.transform.position) < 7)
+        if(Vector3.Distance(blackboard.player.transform.position, context.transform.position) < 8)
         {
             blackboard.playerComparativeStatus = "Too Close";
             direction = (context.transform.position - blackboard.player.transform.position).normalized;
@@ -32,7 +32,7 @@ public class GetCloserToPlayer : ActionNode
             context.transform.LookAt(blackboard.player.transform.position);
             return State.Running;
         }
-        else if(Vector3.Distance(blackboard.player.transform.position, context.transform.position) > 9)
+        else if(Vector3.Distance(blackboard.player.transform.position, context.transform.position) > 12)
         {
             blackboard.playerComparativeStatus = "Too Far";
             direction = ( blackboard.player.transform.position - context.transform.position).normalized;

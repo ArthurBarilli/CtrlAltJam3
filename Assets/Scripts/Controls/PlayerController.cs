@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] float playerSpeed;
     [SerializeField] ParticleSystem stepsFx;
+    [SerializeField] KeyCode getDirectionKey;
 
     [SerializeField] Vector3 groundDirection;
     [SerializeField] CombatManager combatManager;
     [SerializeField] NavMeshAgent playerGuide;
+    [SerializeField] Animator anim;
     Vector3 moveDir;
     // Start is called before the first frame update
     void Start()
@@ -51,11 +53,19 @@ public class PlayerController : MonoBehaviour
                 transform.forward = groundDirection * Time.deltaTime;
             }
             //plays the steps
+            anim.SetBool("Walk", true);
             stepsFx.Play();
         }
         if(groundDirection == Vector3.zero)
         {
             stepsFx.Pause();
+            anim.SetBool("Walk", false);
+        }
+
+        //gets the objective direction
+        if(Input.GetKeyDown(getDirectionKey))
+        {
+            GameManager.Instance.DirectPlayer();
         }
 
     }

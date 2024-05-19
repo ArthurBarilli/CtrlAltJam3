@@ -12,6 +12,8 @@ public class EnemyGhostRound : Enemy
     [SerializeField] GameObject brokeFx;
     [SerializeField] Slider lifeSlider;
     [SerializeField] Slider armorSlider;
+    [SerializeField] ParticleSystem dmgFx;
+    [SerializeField] GameObject particles;
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class EnemyGhostRound : Enemy
         }
         else
         {
+            dmgFx.Play();
             armor -= damage;
             armorSlider.value = armor;
         }
@@ -46,6 +49,7 @@ public class EnemyGhostRound : Enemy
         }
         if(armor <= 0)
         {
+            particles.SetActive(false);
             broke = true;
             eyes.SetActive(false);
             brokeFx.SetActive(true);

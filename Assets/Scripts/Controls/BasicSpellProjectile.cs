@@ -19,14 +19,12 @@ public class BasicSpellProjectile : MonoBehaviour
             if(counter <= lifeTime)
             {
                 counter += Time.deltaTime;
-                Vfx.SetActive(true);
-                trail.emitting = true;
+
             }
             else
             {
                 DeactivateProjectile();
                 Vfx.SetActive(false);
-                trail.emitting = false;
                 active = false;
                 counter = 0;
             }
@@ -51,6 +49,8 @@ public class BasicSpellProjectile : MonoBehaviour
         GetComponent<Light>().enabled = true;
         counter = 0;
         active = true;
+        Vfx.SetActive(true);
+        trail.gameObject.SetActive(true);
         //activate further options
     }
 
@@ -59,6 +59,7 @@ public class BasicSpellProjectile : MonoBehaviour
         GetComponent<Light>().enabled = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = PoolingProjectilesManager.Instance.inactiveProjectilePlace.position;
+        trail.gameObject.SetActive(false);
         //deactivate further options
     }
 

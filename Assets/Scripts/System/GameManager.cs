@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 
@@ -27,6 +28,9 @@ public class GameManager : Singleton<GameManager>
     [Header("Objectives")]
     [SerializeField] float closestDistance = Mathf.Infinity;
     [SerializeField] Transform closestObjective = null;
+    [SerializeField] NavMeshAgent directionAgent;
+    [SerializeField] GameObject directionObject;
+
 
     protected override void Awake()
     {
@@ -79,7 +83,10 @@ public class GameManager : Singleton<GameManager>
         //sets the boss
         currentBoss = Instantiate(bossPrefab, bossSpawn.position, Quaternion.identity);
         objectives.Add(currentBoss.transform);
+        //sets the objective Object
+
         //sets the position of the boss and the boss arena
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -115,6 +122,22 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(ClosestObjective());
     }
 
+    public void DirectPlayer()
+    {
+        StopCoroutine(DirectionTime());
+        directionObject.transform.position = currentPlayer.transform.position;
+        directionObject.SetActive(true);
+        directionAgent.SetDestination(closestObjective.position);
+        StartCoroutine(DirectionTime());
+    }
+
+    IEnumerator DirectionTime()
+    {
+        yield return new WaitForSeconds(3f);
+        directionAgent.ResetPath();
+        directionObject.SetActive(false);   
+    }
+
     private void SpawnEnemies(Collider spawnSpace, int numberOfCharacters)
     {
         Vector3 size = spawnSpace.bounds.size;
@@ -126,4 +149,6 @@ public class GameManager : Singleton<GameManager>
             Instantiate(enemies[randomEnemy], spawnPosition, Quaternion.identity);
         }
     }
+
+
 }

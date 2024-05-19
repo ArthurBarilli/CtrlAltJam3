@@ -17,6 +17,8 @@ public class EnemyGhost : Enemy
     [SerializeField] BoxCollider dmgCollider;
     [SerializeField] Slider lifeSlider;
     [SerializeField] Slider armorSlider;
+    [SerializeField] ParticleSystem hitFx;
+    [SerializeField] GameObject particles;
 
 
     void Start()
@@ -34,6 +36,7 @@ public class EnemyGhost : Enemy
         }
         else
         {
+            hitFx.Play();
             armor -= damage;
         }
     }
@@ -54,6 +57,7 @@ public class EnemyGhost : Enemy
         if(armor <= 0)
         {
             broke = true;
+            particles.SetActive(false);
             eyes.SetActive(false);
             brokeFx.SetActive(true);
         }
@@ -61,12 +65,12 @@ public class EnemyGhost : Enemy
         if(Vector3.Distance(player.transform.position, transform.position) > 40)
         {
             started = false;
-            enemyRenderer.enabled = false;
+            enemyRenderer.gameObject.SetActive(false);
         }
         else if(Vector3.Distance(player.transform.position, transform.position) < 40 && Vector3.Distance(player.transform.position, transform.position) > 20)
         {
             started = false;
-            enemyRenderer.enabled = true;
+            enemyRenderer.gameObject.SetActive(true);
         }
         else if(Vector3.Distance(player.transform.position, transform.position) < 20)
         {
@@ -96,7 +100,7 @@ public class EnemyGhost : Enemy
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && !broke)
         {
             waiting = true;
             other.GetComponent<CombatManager>().TakeDamage(1);

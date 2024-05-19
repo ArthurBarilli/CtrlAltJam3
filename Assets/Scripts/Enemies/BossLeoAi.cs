@@ -12,6 +12,19 @@ public class BossLeoAi : Enemy
     [SerializeField] GameObject bossUi;
     [SerializeField] Slider lifeSlider;
     [SerializeField] Slider armorSlider;
+    
+
+    void Update()
+    {
+        if(bossFight == true)
+        {
+            bossUi.SetActive(true);
+        }
+        else
+        {
+            bossUi.SetActive(false);
+        }
+    }
     public override void TakeDamage(int damage, bool melee)
     {
         if(broke)
@@ -43,6 +56,11 @@ public class BossLeoAi : Enemy
     void Start()
     {
         canTake = true;
+        lifeSlider.maxValue = life;
+        lifeSlider.value = life;
+        armorSlider.maxValue = fullArmor;
+        armorSlider.value = armor;
+        
     }
 
     

@@ -41,7 +41,7 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
         {
             enemySoundProjectiles.Add(Instantiate(enemyProjectile, inactiveProjectilePlace.position, quaternion.identity));
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 7; i++)
         {
             basicProjectiles.Add(Instantiate(basicProjectile, inactiveProjectilePlace.position, quaternion.identity));
         }
@@ -60,9 +60,11 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
         if (currentBasicProjectile >= basicProjectiles.Count - 1)
         {
             currentBasicProjectile = 0;
+            basicProjectiles[currentBasicProjectile].GetComponent<BasicSpellProjectile>().DeactivateProjectile();
             return basicProjectiles[currentBasicProjectile];
         }
         currentBasicProjectile++;
+        basicProjectiles[currentBasicProjectile].GetComponent<BasicSpellProjectile>().DeactivateProjectile();
         return basicProjectiles[currentBasicProjectile];
     }
 
@@ -71,16 +73,18 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
         if (currentLightBallProjectile >= LightBallProjectiles.Count - 1)
         {
             currentLightBallProjectile = 0;
+            LightBallProjectiles[currentLightBallProjectile].GetComponent<LightBallProjectile>().DeactivateProjectile();
             return LightBallProjectiles[currentLightBallProjectile];
         }
         currentLightBallProjectile++;
+        LightBallProjectiles[currentLightBallProjectile].GetComponent<LightBallProjectile>().DeactivateProjectile();
         return LightBallProjectiles[currentLightBallProjectile];
     }
     public GameObject ThrowProjectileEnemySound()
     {
         if (currentEnemyProjectile >= enemySoundProjectiles.Count - 1)
         {
-           currentEnemyProjectile = 0;
+            currentEnemyProjectile = 0;
             return enemySoundProjectiles[currentEnemyProjectile];
         }
         currentEnemyProjectile++;
@@ -91,10 +95,12 @@ public class PoolingProjectilesManager : Singleton<PoolingProjectilesManager>
     {
         if (currentBossLeoProjectile >= bossLeoProjectiles.Count - 1)
         {
-           currentBossLeoProjectile = 0;
+            currentBossLeoProjectile = 0;
+            LightBallProjectiles[currentLightBallProjectile].GetComponent<EnemyProjectile>().DeactivateProjectile();
             return bossLeoProjectiles[currentBossLeoProjectile];
         }
         currentBossLeoProjectile++;
+        LightBallProjectiles[currentLightBallProjectile].GetComponent<EnemyProjectile>().DeactivateProjectile();
         return bossLeoProjectiles[currentBossLeoProjectile];
     }
 

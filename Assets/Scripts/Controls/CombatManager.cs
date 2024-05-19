@@ -117,6 +117,7 @@ public class CombatManager : MonoBehaviour
         {
 
             attackDirection = worldPosition - transform.position;
+            anim.SetTrigger("Cast");
             transform.LookAt(worldPosition);
             if(mana >= inventary[currentSpell].manaCost && canCast)
             {
@@ -140,7 +141,7 @@ public class CombatManager : MonoBehaviour
             StartCoroutine(WaitForMeleeFireRate());
             attackDirection = worldPosition - transform.position;
             transform.LookAt(worldPosition);
-            anim.SetTrigger("Attack");
+            anim.SetTrigger("Melee");
         }
 
 
