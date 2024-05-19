@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 459c058636b316f4e95035f9a4ce2cf6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8061833
+      value: -10.084154
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 459c058636b316f4e95035f9a4ce2cf6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0024719695
+      value: -2.5671601
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 459c058636b316f4e95035f9a4ce2cf6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.661913
+      value: 0.47947717
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 459c058636b316f4e95035f9a4ce2cf6,
         type: 3}
@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 459c058636b316f4e95035f9a4ce2cf6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 459c058636b316f4e95035f9a4ce2cf6,
         type: 3}
@@ -116,4 +116,4 @@ LODGroup:
   - screenRelativeHeight: 0.00814019
     fadeTransitionWidth: 0
     renderers: []
-  m_Enabled: 1
+  m_Enabled: 0

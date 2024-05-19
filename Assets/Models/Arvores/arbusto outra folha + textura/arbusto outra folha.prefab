@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7250380a19919b84ab4e45e4e41d5d3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9697456
+      value: -10.247716
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7250380a19919b84ab4e45e4e41d5d3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000032836274
+      value: -2.5696354
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7250380a19919b84ab4e45e4e41d5d3a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.3322663
+      value: 1.1498306
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7250380a19919b84ab4e45e4e41d5d3a,
         type: 3}
@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7250380a19919b84ab4e45e4e41d5d3a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7250380a19919b84ab4e45e4e41d5d3a,
         type: 3}
@@ -104,7 +104,7 @@ LODGroup:
   - screenRelativeHeight: 0.00814019
     fadeTransitionWidth: 0
     renderers: []
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!23 &6859471699735459785 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7250380a19919b84ab4e45e4e41d5d3a,
